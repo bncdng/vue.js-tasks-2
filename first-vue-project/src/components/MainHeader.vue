@@ -16,12 +16,8 @@
 
 <script>
 export default {
-  data() {
-    return {
-        message: "Ich bin die MainHeader Component"
-    }
-  }
-}
+  name: 'MainHeader'
+};
 </script>
 
 <style scoped>
