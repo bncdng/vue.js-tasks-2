@@ -6,20 +6,32 @@
         <tr>
           <th class="table-item__table-head-name">Name</th>
           <th class="table-item__table-head--isbn">ISBN</th>
+          <th class="th.table-item__table-head--actions">Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="book in books" :key="book.isbn" class="table-item__table-row">
-          <td>{{ book.title }}</td>
-          <td>{{ book.isbn }}</td>
-        </tr>
+        <BookListRow
+          v-for="book in books"
+          :key="book.isbn"
+          :title="book.title"
+          :isbn="book.isbn"
+          class="table-item__table-row"
+        />
       </tbody>
     </table>
   </section>
 </template>
 
 <script>
+// IMPORT COMPONENT BookListRow
+import BookListRow from '@/components/BookListRow.vue'
+
 export default {
+  // REGISTER COMPONENT BookListRow
+  components: {
+    BookListRow
+  },
+
   data() {
     return {
       books: [
@@ -94,8 +106,7 @@ export default {
   color: #ffffff;
   text-align: left;
 }
-.table-item__table th,
-.table-item__table td {
+.table-item__table th {
   padding: 12px 15px;
 }
 .table-item__table tbody tr {

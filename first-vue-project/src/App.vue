@@ -1,5 +1,5 @@
 <template>
-  <h1>Hallo Vue</h1>
+  <!-- USE COMPONENTS -->
   <MainHeader />
   <main>
     <div id="app" class="inside">
@@ -9,14 +9,14 @@
 </template>
 
 <script>
-// IMPORT COMPONENT
+// IMPORT COMPONENTS
 import MainHeader from '@/components/MainHeader.vue'
 import BookList from '@/components/BookList.vue'
 
 export default {
   name: 'App',
+  // REGISTER COMPONENTS
   components: {
-    // REGISTER COMPONENT
     MainHeader,
     BookList
   }
