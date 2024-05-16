@@ -6,7 +6,7 @@
         <tr>
           <th class="table-item__table-head-name">Name</th>
           <th class="table-item__table-head--isbn">ISBN</th>
-          <th class="th.table-item__table-head--actions">Action</th>
+          <th class="table-item__table-head--action">&nbsp;</th>
         </tr>
       </thead>
       <tbody>
@@ -15,6 +15,8 @@
           :key="book.isbn"
           :title="book.title"
           :isbn="book.isbn"
+          :isBookmarked="book?.isBookmarked"
+          @bookmark-clicked="handleBookmarkClick"
           class="table-item__table-row"
         />
       </tbody>
@@ -23,54 +25,60 @@
 </template>
 
 <script>
-// IMPORT COMPONENT BookListRow
-import BookListRow from '@/components/BookListRow.vue'
+import BookListRow from "@/components/BookListRow.vue";
 
 export default {
-  // REGISTER COMPONENT BookListRow
   components: {
-    BookListRow
+    BookListRow,
   },
-
   data() {
     return {
       books: [
         {
-          title: 'Practical Rust Web Projects',
-          isbn: '9781484265888',
-          author: 'Shing Lyu',
-          publisher: 'Apress',
-          price: '$28.75',
-          numPages: 256
+          title: "Practical Rust Web Projects",
+          isbn: "9781484265888",
+          author: "Shing Lyu",
+          publisher: "Apress",
+          price: "$28.75",
+          numPages: 256,
         },
         {
-          title: 'Using WebPagetest',
-          isbn: '9781491902592',
-          author: 'Rick Viscomi, Andy Davies, Marcel Duran',
+          title: "Using WebPagetest",
+          isbn: "9781491902592",
+          author: "Rick Viscomi, Andy Davies, Marcel Duran",
           publisher: "O'Reilly Media",
-          price: '$25.80',
-          numPages: 214
+          price: "$25.80",
+          numPages: 214,
         },
         {
-          title: 'Web Scraping with Python',
-          isbn: '9781491910290',
-          author: 'Ryan Mitchell',
+          title: "Web Scraping with Python",
+          isbn: "9781491910290",
+          author: "Ryan Mitchell",
           publisher: "O'Reilly Media",
-          price: '$14.00',
-          numPages: 256
+          price: "$14.00",
+          numPages: 256,
         },
         {
-          title: 'High Performance Mobile Web',
-          isbn: '9781491912553',
-          author: 'Maximiliano Firtman',
+          title: "High Performance Mobile Web",
+          isbn: "9781491912553",
+          author: "Maximiliano Firtman",
           publisher: "O'Reilly Media",
-          price: '$7.00',
-          numPages: 326
-        }
-      ]
-    }
-  }
-}
+          price: "$7.00",
+          numPages: 326,
+        },
+      ],
+    };
+  },
+  methods: {
+    handleBookmarkClick(isbn) {
+      const currentBookIndex = this.books.findIndex(
+        (book) => book.isbn === isbn
+      );
+      const currentBook = this.books[currentBookIndex];
+      currentBook.isBookmarked = !currentBook.isBookmarked ? true : false;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -82,13 +90,13 @@ export default {
   width: 100%;
 }
 .table-item__table-head-name {
-  width: 65%;
+  width: 60%;
 }
 .table-item__table-head-isbn {
   width: 20%;
 }
 .table-item__table-head-actions {
-  width: 15%;
+  width: 20%;
 }
 .table-item__table-row button {
   opacity: 0;
@@ -98,9 +106,6 @@ export default {
   border-radius: 5px;
 }
 
-.table-item__table-row:hover button {
-  opacity: 1;
-}
 .table-item__table thead tr {
   background-color: var(--primary);
   color: #ffffff;

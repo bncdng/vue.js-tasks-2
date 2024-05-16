@@ -1,9 +1,10 @@
 <template>
-  <button :class="styling">{{ text }}</button>
+  <button :class="styling" @click="$emit('btn-clicked')">{{ text }}</button>
 </template>
 
 <script>
 export default {
+  emits: ['btn-clicked'],
   props: {
     text: {
       type: String,
@@ -19,7 +20,7 @@ export default {
   },
   computed: {
     styling() {
-      return ['btn', `btn--${this.variant}`];
+      return ['btn', `btn--${this.variant}`]
     }
   }
 }

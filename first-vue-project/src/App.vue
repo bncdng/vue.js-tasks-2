@@ -1,6 +1,5 @@
 <template>
-  <!-- USE COMPONENTS -->
-  <MainHeader />
+  <LayoutHeader />
   <main>
     <div id="app" class="inside">
       <BookList />
@@ -9,18 +8,16 @@
 </template>
 
 <script>
-// IMPORT COMPONENTS
-import MainHeader from '@/components/MainHeader.vue'
-import BookList from '@/components/BookList.vue'
+import LayoutHeader from "./components/LayoutHeader.vue";
+import BookList from "./components/BookList.vue";
 
 export default {
-  name: 'App',
-  // REGISTER COMPONENTS
+  name: "App",
   components: {
-    MainHeader,
-    BookList
-  }
-}
+    LayoutHeader,
+    BookList,
+  },
+};
 </script>
 
 <style>

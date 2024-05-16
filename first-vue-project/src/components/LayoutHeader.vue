@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'MainHeader'
+  name: "LayoutHeader",
 };
 </script>
 
